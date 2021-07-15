@@ -1,0 +1,11 @@
+Package: dadosbenANS
+Title: Download consolidated beneficiary information from ANS
+Version: 0.0.0.9000
+Imports: dplyr, utils, magrittr, stringr
+Author: Jessica de Araujo Silva Caieiro <jessica.caieiro@lcaconsultores.com.br>
+Description: Downloads the consolidated beneficiary information files from SIB/ANS and RPS/ANS and imports the files for use.
+License: GPL-3 
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1.9001
