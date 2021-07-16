@@ -54,20 +54,20 @@ getben <- function(ano, mes,cobertura, tipo_contrato, autogestao = FALSE,  uf = 
     arquivo <- zip$Name
     dados <- read.csv(unz(temp, arquivo), sep = ";")
 
-    if (autogestao == T) {
+    if (autogestao == TRUE) {
       dados <- dados %>%
         dplyr::filter(
           COBERTURA_ASSIST_PLAN == cobertura,
-          DE_CONTRATACAO_PLANO == stringr::str_detect(DE_CONTRATACAO_PLANO,
-                                                      stringr::str_to_upper(tipo_contrato))
+          str_detect(DE_CONTRATACAO_PLANO,
+                     stringr::str_to_upper(tipo_contrato))
         )
     } else {
       dados <- dados %>%
         dplyr::filter(
           MODALIDADE_OPERADORA != "AUTOGESTÃO",
           COBERTURA_ASSIST_PLAN == cobertura,
-          DE_CONTRATACAO_PLANO == stringr::str_detect(DE_CONTRATACAO_PLANO,
-                                             stringr::str_to_upper(tipo_contrato))
+          str_detect(DE_CONTRATACAO_PLANO,
+                     stringr::str_to_upper(tipo_contrato))
         )
     }
 
