@@ -12,7 +12,7 @@ devtools::install_github("jessicaasc/dadosbenANS")
 ```
 ## Utilização
 
-O pacote consiste em uma única função que realiza o download dos dados por competêcia, cobertura e tipo de contratação de interesse. 
+O pacote é composto por uma única função que realiza o download dos dados por competêcia, cobertura e tipo de contratação de interesse. 
 
 ### Exemplo
 
