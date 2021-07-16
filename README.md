@@ -19,5 +19,5 @@ O pacote é composto por uma única função que realiza o download dos dados po
 ```{r example}
 library(dadosbenANS)
 dados <- getben(ano = "2020", mes = "12", cobertura = "Médico-hospitalar",
-                tipo_contrato = "Individual", uf = "SP")
+                tipo_contrato = "Individual", uf = c("SP","MG"))
 ```
