@@ -21,13 +21,13 @@
 #' @export
 
 
-getben <- function(ano, mes,cobertura, tipo_contrato, autogestao = FALSE,  uf = "all") {
+getben <- function(ano, mes,cobertura, tipo_contrato, autogestao = FALSE,  uf = ufs) {
   temp <- tempfile()
 
   url <- "http://ftp.dadosabertos.ans.gov.br/FTP/PDA/informacoes_consolidadas_de_beneficiarios/"
 
   # Check UF
-  all <- c("AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO")
+  ufs <- c("AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO")
   if (!all((uf %in% c("all", all)))) stop("UF unknow.")
 
   df <- data.frame()
