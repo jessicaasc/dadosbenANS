@@ -4,10 +4,9 @@
 #'
 #' @param ano. Ano de interesse no formato "aaaa".
 #' @param mes. Mês de interesse no formato "mm".
-#' @param cobertura. Tipo de cobertura de plano do beneficiário - "Médico-hospitalar" ou "Odontológico".
-#' @param tipo_contrato. Tipo de contratação do plano do beneficiário - "Empresarial", "Adesão", "Individual".
+#' @param tipo_contrato. Tipo de contratação do plano do beneficiário - "Empresarial", "Adesão", "Individual". Aceita vetor c("Empresarial", "Adesão", "Individual") para extrair todas.
 #' @param autogestao. Parâmetro para exclusão das operadoras que seguem a modalidade de autogestão. Use autogestao = TRUE para incluir essa modalidade.
-#' @param uf. UFs de interesse.
+#' @param uf. UFs de interesse.Para extrair todas as UFS, utilizar "all"
 #' @examples
 #'
 #' getben(ano = "2020", mes = "12", cobertura = "Médico-hospitalar", tipo_contrato = "Individual", uf = "SP")
@@ -27,26 +26,26 @@ getben <- function(ano, mes,cobertura, tipo_contrato, autogestao = FALSE,  uf = 
   url <- "http://ftp.dadosabertos.ans.gov.br/FTP/PDA/informacoes_consolidadas_de_beneficiarios/"
 
   # Check UF
-  ufs <- c("AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO")
-  if (!all((uf %in% c("all", ufs)))) stop("UF unknow.")
+  all <- c("AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO")
+  if (!all((uf %in% c("all", all)))) stop("UF unknow.")
 
   df <- data.frame()
 
   for (i in 1:length(uf)) {
     subdir1 <- paste(url,
-      ano,
-      mes,
-      sep = ""
+                     ano,
+                     mes,
+                     sep = ""
     )
     subdir2 <- paste(subdir1,
-      "/",
-      "ben",
-      ano,
-      mes,
-      "_",
-      uf[i],
-      ".zip",
-      sep = ""
+                     "/",
+                     "ben",
+                     ano,
+                     mes,
+                     "_",
+                     uf[i],
+                     ".zip",
+                     sep = ""
     )
 
     utils::download.file(subdir2, temp)
@@ -57,18 +56,18 @@ getben <- function(ano, mes,cobertura, tipo_contrato, autogestao = FALSE,  uf = 
     if (autogestao == TRUE) {
       dados <- dados %>%
         dplyr::filter(
-          COBERTURA_ASSIST_PLAN == cobertura,
+          COBERTURA_ASSIST_PLAN %in% cobertura,
           stringr::str_detect(DE_CONTRATACAO_PLANO,
-                     stringr::str_to_upper(tipo_contrato))
+                              paste(stringr::str_to_upper(tipo_contrato), collapse = "|"))
         )
     } else {
       dados <- dados %>%
         dplyr::filter(
           MODALIDADE_OPERADORA != "AUTOGESTÃO",
-          COBERTURA_ASSIST_PLAN == cobertura,
+          COBERTURA_ASSIST_PLAN %in% cobertura,
           stringr::str_detect(DE_CONTRATACAO_PLANO,
-                     stringr::str_to_upper(tipo_contrato))
-        )
+                              paste(stringr::str_to_upper(tipo_contrato), collapse = "|"))
+          )
     }
 
     df <- rbind(df, dados)
