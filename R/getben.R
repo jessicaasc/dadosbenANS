@@ -28,7 +28,7 @@ getben <- function(ano, mes,cobertura, tipo_contrato, autogestao = FALSE,  uf = 
 
   # Check UF
   ufs <- c("AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO")
-  if (!all((uf %in% c("all", all)))) stop("UF unknow.")
+  if (!all((uf %in% c("all", ufs)))) stop("UF unknow.")
 
   df <- data.frame()
 
