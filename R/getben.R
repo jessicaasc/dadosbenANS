@@ -4,6 +4,7 @@
 #'
 #' @param ano. Ano de interesse no formato "aaaa".
 #' @param mes. Mês de interesse no formato "mm".
+#' @param cobertura. Tipo de cobertura de plano do beneficiário - "Médico-hospitalar" ou "Odontológico". Aceita vetor c("Médico-hospitalar", "Odontológico") para extrair ambas.
 #' @param tipo_contrato. Tipo de contratação do plano do beneficiário - "Empresarial", "Adesão", "Individual". Aceita vetor c("Empresarial", "Adesão", "Individual") para extrair todas.
 #' @param autogestao. Parâmetro para exclusão das operadoras que seguem a modalidade de autogestão. Use autogestao = TRUE para incluir essa modalidade.
 #' @param uf. UFs de interesse.Para extrair todas as UFS, utilizar "all"
