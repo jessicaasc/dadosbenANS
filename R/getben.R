@@ -57,7 +57,8 @@ getben <- function(ano, mes,cobertura, tipo_contrato, autogestao = FALSE,  uf = 
     if (autogestao == TRUE) {
       dados <- dados %>%
         dplyr::filter(
-          COBERTURA_ASSIST_PLAN %in% cobertura,
+          stringr::str_detect(COBERTURA_ASSIST_PLAN,
+                              paste(stringr::str_to_upper(cobertura), collapse = "|")),
           stringr::str_detect(DE_CONTRATACAO_PLANO,
                               paste(stringr::str_to_upper(tipo_contrato), collapse = "|"))
         )
@@ -65,7 +66,8 @@ getben <- function(ano, mes,cobertura, tipo_contrato, autogestao = FALSE,  uf = 
       dados <- dados %>%
         dplyr::filter(
           MODALIDADE_OPERADORA != "AUTOGESTÃO",
-          COBERTURA_ASSIST_PLAN %in% cobertura,
+          stringr::str_detect(COBERTURA_ASSIST_PLAN,
+                              paste(stringr::str_to_upper(cobertura), collapse = "|")),
           stringr::str_detect(DE_CONTRATACAO_PLANO,
                               paste(stringr::str_to_upper(tipo_contrato), collapse = "|"))
           )
