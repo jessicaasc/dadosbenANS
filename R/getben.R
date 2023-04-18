@@ -52,7 +52,7 @@ getben <- function(ano, mes,cobertura, tipo_contrato, autogestao = FALSE,  uf = 
     utils::download.file(subdir2, temp)
     zip <- utils::unzip(temp, list = T)
     arquivo <- zip$Name
-    dados <- read.csv(unz(temp, arquivo), sep = ";")
+    dados <- read.csv(unz(temp, arquivo), sep = ";", encoding = 'latin1')
 
     if (autogestao == TRUE) {
       dados <- dados %>%
