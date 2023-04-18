@@ -1,6 +1,6 @@
 # dadosbenANS
  
-O pacote para R *dadosbenANS* permite o download e leitura dos arquivos de informações consolidadas de beneficiários provenientes do Sistema de Informações de Beneficiários (SIB/ANS) e do Sistema de Registro de Produtos (RPS/ANS) (disponíveis em: <http://ftp.dadosabertos.ans.gov.br/FTP/PDA/informacoes_consolidadas_de_beneficiarios/>). 
+O pacote para R *dadosbenANS* permite o download e leitura dos arquivos de informações consolidadas de beneficiários provenientes do Sistema de Informações de Beneficiários (SIB/ANS) e do Sistema de Registro de Produtos (RPS/ANS) (disponíveis em: <http://dadosabertos.ans.gov.br/FTP/PDA/informacoes_consolidadas_de_beneficiarios/>). 
 
 ## Instalação
 
