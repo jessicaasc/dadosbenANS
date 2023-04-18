@@ -24,7 +24,7 @@
 getben <- function(ano, mes,cobertura, tipo_contrato, autogestao = FALSE,  uf = ufs) {
   temp <- tempfile()
 
-  url <- "http://ftp.dadosabertos.ans.gov.br/FTP/PDA/informacoes_consolidadas_de_beneficiarios/"
+  url <- "http://dadosabertos.ans.gov.br/FTP/PDA/informacoes_consolidadas_de_beneficiarios/"
 
   # Check UF
   ufs <- c("AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO")
