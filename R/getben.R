@@ -61,7 +61,7 @@ getben <- function(ano, mes, cobertura, tipo_contrato, autogestao = FALSE,  uf =
           stringr::str_detect(COBERTURA_ASSIST_PLAN,
                               paste(cobertura, collapse = "|")),
           stringr::str_detect(DE_CONTRATACAO_PLANO,
-                              paste(stringr::str_to_upper(tipo_contrato), collapse = "|"))
+                              paste(tipo_contrato, collapse = "|"))
         )
     } else {
       dados <- dados %>%
@@ -70,7 +70,7 @@ getben <- function(ano, mes, cobertura, tipo_contrato, autogestao = FALSE,  uf =
           stringr::str_detect(COBERTURA_ASSIST_PLAN,
                               paste(cobertura, collapse = "|")),
           stringr::str_detect(DE_CONTRATACAO_PLANO,
-                              paste(stringr::str_to_upper(tipo_contrato), collapse = "|"))
+                              paste(tipo_contrato, collapse = "|"))
           )
     }
 
