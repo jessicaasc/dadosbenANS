@@ -21,7 +21,7 @@
 #' @export
 
 
-getben <- function(ano, mes,cobertura, tipo_contrato, autogestao = FALSE,  uf = ufs) {
+getben <- function(ano, mes, cobertura, tipo_contrato, autogestao = FALSE,  uf = ufs) {
   temp <- tempfile()
 
   url <- "https://dadosabertos.ans.gov.br/FTP/PDA/informacoes_consolidadas_de_beneficiarios/"
