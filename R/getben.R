@@ -40,11 +40,12 @@ getben <- function(ano, mes,cobertura, tipo_contrato, autogestao = FALSE,  uf = 
     )
     subdir2 <- paste(subdir1,
                      "/",
-                     "ben",
-                     ano,
-                     mes,
-                     "_",
+                     "pda-024-icb-",
                      uf[i],
+                     "-",
+                     ano,
+                     "_",
+                     mes,
                      ".zip",
                      sep = ""
     )
